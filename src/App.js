@@ -98,9 +98,7 @@ const QuizMyPublic = () => {
     }));
   };
 
-  const getScore = () => {
-    return Object.values(answers).filter(Boolean).length;
-  };
+  const getScore = () => Object.values(answers).filter(Boolean).length;
 
   const getMaturityLevel = () => {
     const score = getScore();
@@ -128,12 +126,10 @@ const QuizMyPublic = () => {
     };
 
     try {
-      await fetch("https://script.google.com/a/macros/leadrix.com.br/s/AKfycbwR9t-JIzQ47fD8m5oLXpAbDLIylBEMes2YPP-dK6G61QV8EkRw4Vgrg-cX1Qg__UEP/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbyo7KF0GBKFlMpbwNM41Qvqx1az3loUOqbLEIE42w6niubdFZHQKLjU_JlcJ1kE4niC/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
     } catch (error) {
@@ -154,12 +150,10 @@ const QuizMyPublic = () => {
     setCurrentSection(0);
     setAnswers({});
     setShowResults(false);
-    setUserInfo(null); // para voltar pro formulário também
+    setUserInfo(null);
   };
 
-  if (!userInfo) {
-    return <UserInfoForm onSubmit={setUserInfo} />;
-  }
+  if (!userInfo) return <UserInfoForm onSubmit={setUserInfo} />;
 
   if (showResults) {
     const level = getMaturityLevel();
@@ -199,9 +193,14 @@ const QuizMyPublic = () => {
             <button onClick={restartQuiz} className="px-6 py-3 bg-white text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50">
               Refazer Assessment
             </button>
-            <button className="px-8 py-3 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-lg font-semibold shadow-md hover:from-gray-800 hover:to-gray-900">
+            <a
+              href="https://conarec.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-lg font-semibold shadow-md hover:from-gray-800 hover:to-gray-900 text-center inline-block"
+            >
               Descobrir Trilhas CONAREC
-            </button>
+            </a>
           </div>
         </div>
       </div>
